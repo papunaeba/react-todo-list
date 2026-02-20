@@ -1,0 +1,11 @@
+{
+  "liveServer.settings.port": 5501,
+  "editor.quickSuggestions": {
+    "other": "off"
+  },
+  "terminal.integrated.suggest.quickSuggestions": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.inlineSuggest.edits.experimental.onlyShowWhenCloseToCursor": false,
+  "editor.screenReaderAnnounceInlineSuggestion": false
+}
