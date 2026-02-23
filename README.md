@@ -10,7 +10,6 @@ A simple and responsive Todo List application built with React.
 
 * Add new tasks
 * Delete tasks
-* Mark tasks as completed
 * Clean and minimal UI
 * Responsive design
 
@@ -19,7 +18,7 @@ A simple and responsive Todo List application built with React.
 * React
 * JavaScript (ES6+)
 * CSS
-* Vite (if you used Vite)
+* Vite
 
 ## 📂 Project Structure
 
