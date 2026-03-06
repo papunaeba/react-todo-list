@@ -1,5 +1,9 @@
 # 📝 React Todo List
 
+<p align="center">
+  <img src="./screenshot.png" width="700">
+</p>
+
 A responsive Todo List application built with React to practice state management, component logic, and browser storage.
 
 ## 🚀 Live Demo
