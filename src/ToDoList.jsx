@@ -1,8 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 function ToDoList() {
-  const [tasks, setTasks] = useState(["eat", "sleep", "code"]);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks
+      ? JSON.parse(savedTasks)
+      : [
+          { id: 1, text: "eat" },
+          { id: 2, text: "sleep" },
+          { id: 3, text: "code" },
+        ];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
   const [newTask, setNewTask] = useState("");
+  const buttonRef = useRef(null);
 
   function handleAddTask(event) {
     setNewTask(event.target.value);
@@ -10,14 +24,26 @@ function ToDoList() {
 
   function addTask() {
     if (newTask.trim() !== "") {
-      setTasks([...tasks, newTask]);
+      setTasks([...tasks, { id: Date.now(), text: newTask }]);
       setNewTask("");
+      triggerRotate();
+    }
+  }
+  function triggerRotate() {
+    buttonRef.current.classList.add("rotate");
+    setTimeout(() => {
+      buttonRef.current.classList.remove("rotate");
+    }, 300);
+  }
+
+  function clearAllTasks() {
+    if (window.confirm("Delete all tasks?")) {
+      setTasks([]);
     }
   }
 
   function deleteTask(index) {
-    const newTasks = tasks.filter((element, index2) => index2 !== index);
-    setTasks(newTasks);
+    setTasks(tasks.filter((element, index2) => index2 !== index));
   }
 
   function moveTaskUp(index) {
@@ -52,8 +78,17 @@ function ToDoList() {
             placeholder="Enter a new task..."
             value={newTask}
             onChange={handleAddTask}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                addTask();
+              }
+            }}
           />
-          <button className="add-button" onClick={addTask}>
+          <button
+            className={`add-button ${tasks.length === 0 ? "full-width" : ""}`}
+            onClick={addTask}
+            ref={buttonRef}
+          >
             <svg
               height="24"
               width="24"
@@ -72,7 +107,7 @@ function ToDoList() {
         <ol>
           {tasks.map((task, index) => (
             <li key={task.id}>
-              <span className="text">{task}</span>
+              <span className="text">{task.text}</span>
               <button
                 className="delete-button"
                 onClick={() => deleteTask(index)}
@@ -91,6 +126,11 @@ function ToDoList() {
             </li>
           ))}
         </ol>
+        {tasks.length > 0 && (
+          <button className="clear-button" onClick={clearAllTasks}>
+            Clear All Tasks
+          </button>
+        )}
       </div>
     </>
   );
