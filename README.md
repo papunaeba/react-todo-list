@@ -1,48 +1,33 @@
 # 📝 React Todo List
 
-A simple and responsive Todo List application built with React.
+A responsive Todo List application built with React to practice state management, component logic, and browser storage.
 
 ## 🚀 Live Demo
 
-👉 https://react-todo-list-vert-omega.vercel.app/
+https://react-todo-list-vert-omega.vercel.app/
 
-## 📌 Features
+## ✨ Features
 
-* Add new tasks
-* Delete tasks
-* Clean and minimal UI
-* Responsive design
+- Add new tasks
+- Delete tasks
+- Reorder tasks (move up/down)
+- Clear all tasks
+- LocalStorage persistence
+- Keyboard support (Enter to add task)
+- Responsive layout
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
-* React
-* JavaScript (ES6+)
-* CSS
-* Vite
+- React
+- JavaScript (ES6+)
+- CSS
+- Vite
 
-## 📂 Project Structure
+## 📦 Installation
 
-src/
-components/
-App.jsx
-main.jsx
-
-## ⚙️ Installation & Setup
-
-Clone the repository:
+```bash
 git clone https://github.com/papunaeba/react-todo-list.git
-
-Install dependencies:
+cd react-todo-list
 npm install
-
-Run the development server:
 npm run dev
-
-## 🎯 Purpose
-
-This project was created to practice React fundamentals such as:
-
-* Components
-* State management
-* Event handling
-
+```
